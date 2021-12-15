@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package packet.todo.v1;
+
+option go_package = "github.com/reiot777/go-genproto/packet/v1/todo;todo_v1";
+
+message Task {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}

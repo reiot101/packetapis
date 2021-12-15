@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package packet.api;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/reiot777/go-genproto/packet/api;api";
+
+extend google.protobuf.MethodOptions {
+  // OAuth scopes needed for the client.
+  //
+  // Example:
+  //
+  //   service Foo {
+  //     option (packet.api.oauth_scopes) = \
+  //       "http://any.url/x,"
+  //       "http://any.url/y";
+  //     ...
+  //   }
+  string oauth_scopes = 1050;
+}

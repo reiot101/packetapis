@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package packet.todo.v1;
+
+import "packet/todo/v1/resource.proto";
+import "packet/api/oauth.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/reiot777/go-genproto/packet/v1/todo;todo_v1";
+
+service TodoService {
+  rpc AddTask (Task) returns (google.protobuf.Empty) {
+    option (packet.api.oauth_scopes) = 
+      "write";
+  }
+  rpc GetTask (GetTaskRequest) returns (Task) {
+    option (packet.api.oauth_scopes) = 
+      "read";
+  }
+  rpc ListTasks (ListTasksRequest) returns (ListTaskResponse) {
+    option (packet.api.oauth_scopes) = 
+      "read";
+  }
+}
+
+message GetTaskRequest {
+  string id = 1;
+}
+
+message ListTasksRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListTaskResponse {
+  repeated Task data = 1;
+}
